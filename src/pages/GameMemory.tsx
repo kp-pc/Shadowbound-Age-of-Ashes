@@ -58,7 +58,7 @@ function GameMemory() {
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Game Over!</h2>
           <p>Final Score: {score}</p>
-          <Button onClick={() => (window.location.href = '/games')}>
+          <Button variant="default" onClick={() => (window.location.href = '/games')}>
             Play Again
           </Button>
         </div>

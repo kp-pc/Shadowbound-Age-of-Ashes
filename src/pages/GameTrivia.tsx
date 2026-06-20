@@ -46,7 +46,7 @@ function GameTrivia() {
           <h2 className="text-2xl font-bold mb-2">{triviaQuestions[currentQuestion].question}</h2>
           <div className="flex flex-wrap gap-2 mb-4">
             {triviaQuestions[currentQuestion].options.map((option, idx) => (
-              <Button key={idx} color="blue" onClick={() => handleAnswer(option)}>
+              <Button key={idx} variant="default" onClick={() => handleAnswer(option)}>
                 {option}
               </Button>
             ))}
@@ -57,7 +57,7 @@ function GameTrivia() {
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Game Over!</h2>
           <p>Final Score: {score}</p>
-          <Button color="blue" onClick={() => (window.location.href = '/games')}>
+          <Button variant="default" onClick={() => (window.location.href = '/games')}>
             Play Again
           </Button>
         </div>
