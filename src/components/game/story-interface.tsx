@@ -49,7 +49,7 @@ const storyNodes: StoryNode[] = [
   },
   {
     id: 'voice',
-    text: `The whispering voice grows clearer as you follow it: "Seek the Obsidian Altar, where the moon's blood flows freely. There, your true nature will be revealed." The voice seems to come from a shadowy figure just beyond the torchlight.`,
+    text: 'The whispering voice grows clearer as you follow it: "Seek the Obsidian Altar, where the moon\'s blood flows freely. There, your true nature will be revealed." The voice seems to come from a shadowy figure just beyond the torchlight.',
     choices: [
       {
         id: 'trust-voice',
@@ -92,7 +92,7 @@ const storyNodes: StoryNode[] = [
   },
   {
     id: 'strengthen-seal',
-    text: 'You chant the ancient words of binding, reinforcing the seal with your own life force. The symbols flare bright gold before settling into a steady, watchful glow. A sense of accomplishment fills you, though you wonder what you might have sacrificed.',
+    text: 'You chant the ancient words of binding, reinforcing the seal with your own life force. The symbols flare bright gold before settling into a steady, watchful glow. A sense of accomplishment fills you, though you wonder what you may have sacrificed.',
     choices: [],
     isEnding: true
   },
@@ -147,7 +147,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({ onComplete }) =>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="prose dark:prose-invert text-darkFantasy-secondary">
+            <div className="prose dark:prose-invert text-darkFantasy-secondary break-words">
               {currentNode.text}
             </div>
             {onComplete && (
@@ -173,7 +173,7 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({ onComplete }) =>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="prose dark:prose-invert text-darkFantasy-secondary">
+          <div className="prose dark:prose-invert text-darkFantasy-secondary break-words">
             {currentNode.text}
           </div>
           {currentNode.choices?.length > 0 && (
@@ -183,12 +183,12 @@ export const StoryInterface: React.FC<StoryInterfaceProps> = ({ onComplete }) =>
                   key={choice.id}
                   variant="outline"
                   onClick={() => handleChoice(choice.id)}
-                  className="w-full text-left bg-darkFantasy-secondary/50 hover:bg-darkFantasy-secondary border-darkFantasy-border text-darkFantasy-highlight font-gothic py-3"
+                  className="w-full text-left bg-darkFantasy-secondary/50 hover:bg-darkFantasy-secondary border-darkFantasy-border text-darkFantasy-highlight font-gothic py-3 h-auto whitespace-normal"
                 >
-                  <div className="flex justify-between">
-                    <span>{choice.text}</span>
+                  <div className="flex flex-col">
+                    <span className="block">{choice.text}</span>
                     {choice.consequences && (
-                      <span className="text-sm text-darkFantasy-accent italic">
+                      <span className="text-sm text-darkFantasy-accent italic mt-1">
                         {choice.consequences}
                       </span>
                     )}
