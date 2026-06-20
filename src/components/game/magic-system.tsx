@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Flame, Wind, Zap, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -50,14 +50,21 @@ const SPELLS: Spell[] = [
 
 export const MagicSystem: React.FC = () => {
   const [activeSpell, setActiveSpell] = useState<string | null>(null);
+  const [announcement, setAnnouncement] = useState('');
 
   const castSpell = (spellId: string) => {
     setActiveSpell(spellId);
+    setAnnouncement(`Casting ${spellId.replace('-', ' ')} spell`);
     setTimeout(() => setActiveSpell(null), 2000);
   };
 
   return (
     <div className="p-4 space-y-6">
+      {/* Accessibility live region for screen readers */}
+      <div aria-live="polite" className="sr-only">
+        {announcement}
+      </div>
+      
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {SPELLS.map(spell => (
           <Card 

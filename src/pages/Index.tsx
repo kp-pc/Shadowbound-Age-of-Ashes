@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { CharacterCreator } from '@/components/game/character-creator';
 import { StoryInterface } from '@/components/game/story-interface';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { SkipLink } from '@/components/accessibility/SkipLink';
 
 const Index = () => {
   const [characterCreated, setCharacterCreated] = useState(false);
@@ -19,7 +20,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-darkFantasy-primary text-white min-h-screen flex flex-col items-center justify-center">
+    <div id="main-content" className="min-h-screen bg-darkFantasy-primary text-white min-h-screen flex flex-col items-center justify-center">
+      <SkipLink />
       <Card className="w-full max-w-3xl bg-darkFantasy-secondary rounded-xl shadow-xl p-6">
         <CardHeader>
           <CardTitle className="text-4xl font-gothic text-darkFantasy-highlight text-center">
