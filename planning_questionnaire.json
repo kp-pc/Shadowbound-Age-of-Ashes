@@ -4,23 +4,20 @@
       "questions": [
          {
             "type": "text",
-            "question": "How should the story narrative be presented (e.g., through a narrative text area, interactive prompts, etc.)?"
-         },
-         {
-            "type": "radio",
-            "question": 'Which interaction style for choices do you prefer?',
-            "options": [
-               'Pop-up dialog',
-               'In-game icon',
-               'Auto-advance'
-            ]
+            "question": "What UI elements are most important for your game's interface?"
          },
          {
             "type": "checkbox",
-            "question": 'Do you have a preferred button style?)',
+            "question": "Do you prefer a dark or light theme?",
+            "options": ["light", "dark"]
+         },
+         {
+            "type": "radio",
+            "question": 'Which color palette do you like most?',
             "options": [
-               'Rounded buttons',
-               'Solid colored buttons'
+               'Tropical colors',
+               'Nature colors',
+               'Tech colors'
             ]
          }
       ]
