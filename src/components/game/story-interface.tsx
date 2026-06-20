@@ -49,7 +49,7 @@ const storyNodes: StoryNode[] = [
   },
   {
     id: 'voice',
-    text: 'The whispering voice grows clearer as you follow it: "Seek the Obsidian Altar, where the moon\\'s blood flows freely. There, your true nature will be revealed." The voice seems to come from a shadowy figure just beyond the torchlight.',
+    text: `The whispering voice grows clearer as you follow it: "Seek the Obsidian Altar, where the moon's blood flows freely. There, your true nature will be revealed." The voice seems to come from a shadowy figure just beyond the torchlight.`,
     choices: [
       {
         id: 'trust-voice',
@@ -122,7 +122,11 @@ const storyNodes: StoryNode[] = [
   }
 ];
 
-export const StoryInterface: React.FC = ({ onComplete }) => {
+interface StoryInterfaceProps {
+  onComplete?: () => void;
+}
+
+export const StoryInterface: React.FC<StoryInterfaceProps> = ({ onComplete }) => {
   const [currentNodeId, setCurrentNodeId] = useState<string>('start');
   const currentNode = storyNodes.find(node => node.id === currentNodeId);
 
@@ -133,11 +137,40 @@ export const StoryInterface: React.FC = ({ onComplete }) => {
 
   if (!currentNode) return <div>Error: Node not found</div>;
 
+  if (currentNode.isEnding) {
+    return (
+      <div className="min-h-screen bg-darkFantasy-shadow p-4 flex items-center justify-center">
+        <Card className="w-full max-w-2xl bg-darkFantasy-primary border-darkFantasy-border">
+          <CardHeader>
+            <CardTitle className="text-3xl font-gothic text-darkFantasy-highlight">
+              Your Destiny is Fulfilled
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="prose dark:prose-invert text-darkFantasy-secondary">
+              {currentNode.text}
+            </div>
+            {onComplete && (
+              <Button
+                onClick={onComplete}
+                className="w-full bg-darkFantasy-accent hover:bg-darkFantasy-highlight text-white font-gothic py-3"
+              >
+                Return to Adventure
+              </Button>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-darkFantasy-shadow p-4 flex items-center justify-center">
       <Card className="w-full max-w-2xl bg-darkFantasy-primary border-darkFantasy-border">
         <CardHeader>
-          <CardTitle className="text-3xl font-gothic text-darkFantasy-highlight">Tale of the Shadow Realm</CardTitle>
+          <CardTitle className="text-2xl font-gothic text-darkFantasy-highlight">
+            Tale of the Shadow Realm
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="prose dark:prose-invert text-darkFantasy-secondary">

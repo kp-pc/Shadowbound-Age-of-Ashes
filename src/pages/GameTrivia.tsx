@@ -6,13 +6,13 @@ const triviaQuestions: { question: string; options: string[]; answer: string }[]
   {
     question: 'What is the capital of France?',
     options: ['Paris', 'London', 'Berlin', 'Madrid'],
-    answer: 'Paris'
+    answer: 'Paris',
   },
   {
     question: 'Which planet is known as the Red Planet?',
     options: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
-    answer: 'Mars'
-  }
+    answer: 'Mars',
+  },
 ];
 
 function GameTrivia() {
@@ -21,7 +21,6 @@ function GameTrivia() {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    // Save score when game ends
     if (gameOver) {
       saveScore('trivia', score);
     }
@@ -29,13 +28,13 @@ function GameTrivia() {
 
   const handleAnswer = (selectedOption: string) => {
     if (selectedOption === triviaQuestions[currentQuestion].answer) {
-      setScore(score + 1);
+      setScore(prev => prev + 1);
     }
-    
-    setCurrentQuestion(currentQuestion + 1);
-    
-    if (currentQuestion + 1 >= triviaQuestions.length) {
+    const next = currentQuestion + 1;
+    if (next >= triviaQuestions.length) {
       setGameOver(true);
+    } else {
+      setCurrentQuestion(next);
     }
   };
 
@@ -47,11 +46,7 @@ function GameTrivia() {
           <h2 className="text-2xl font-bold mb-2">{triviaQuestions[currentQuestion].question}</h2>
           <div className="flex flex-wrap gap-2 mb-4">
             {triviaQuestions[currentQuestion].options.map((option, idx) => (
-              <Button
-                key={idx}
-                color="blue"
-                onClick={() => handleAnswer(option)}
-              >
+              <Button key={idx} color="blue" onClick={() => handleAnswer(option)}>
                 {option}
               </Button>
             ))}
@@ -62,7 +57,7 @@ function GameTrivia() {
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">Game Over!</h2>
           <p>Final Score: {score}</p>
-          <Button color="blue" onClick={() => window.location.href = "/games"}>
+          <Button color="blue" onClick={() => (window.location.href = '/games')}>
             Play Again
           </Button>
         </div>

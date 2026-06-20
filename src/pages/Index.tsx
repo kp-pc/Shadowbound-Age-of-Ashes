@@ -20,7 +20,7 @@ const Index = () => {
   };
 
   return (
-    <div id="main-content" className="min-h-screen bg-darkFantasy-primary text-white min-h-screen flex flex-col items-center justify-center">
+    <div id="main-content" className="min-h-screen bg-darkFantasy-primary text-white flex flex-col items-center justify-center">
       <SkipLink />
       <Card className="w-full max-w-3xl bg-darkFantasy-secondary rounded-xl shadow-xl p-6">
         <CardHeader>
@@ -65,7 +65,7 @@ const Index = () => {
           )}
         </CardContent>
       </Card>
-      
+
       {characterCreated && character && (
         <div className="mt-8">
           <StoryInterface />

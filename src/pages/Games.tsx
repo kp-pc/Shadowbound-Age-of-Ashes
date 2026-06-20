@@ -1,43 +1,48 @@
 import React from 'react';
-import { Card, Button } from '@/components/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 function Games() {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Available Games</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="p-4 rounded-lg shadow-md">
-          <Card.Header>
-            <Card.Title as="h3" className="font-semibold">
+          <CardHeader>
+            <CardTitle className="font-semibold">
               Trivia Night
-            </Card.Title>
-          </Card.Header>
-          <Card.Description>
-            Test your knowledge with fun trivia questions
-          </Card.Description>
-          <Card.Actions>
-            <Button as={Link} to="/games/trivia" className="w-full">
-              Play Now
+            </CardTitle>
+            <CardDescription>
+              Test your knowledge with fun trivia questions
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild className="w-full">
+              <Link to="/games/trivia">
+                Play Now
+              </Link>
             </Button>
-          </Card.Actions>
+          </CardContent>
         </Card>
-        
+
         <Card className="p-4 rounded-lg shadow-md">
-          <Card.Header>
-            <Card.Title as="h3" className="font-semibold">
+          <CardHeader>
+            <CardTitle className="font-semibold">
               Memory Match
-            </Card.Title>
-          </Card.Header>
-          <Card.Description>
-            Classic card-matching game to train your memory
-          </Card.Description>
-          <Card.Actions>
-            <Button as={Link} to="/games/memory" className="w-full">
-              Play Now
+            </CardTitle>
+            <CardDescription>
+              Classic card-matching game to train your memory
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild className="w-full">
+              <Link to="/games/memory">
+                Play Now
+              </Link>
             </Button>
-          </Card.Actions>
+          </CardContent>
         </Card>
       </div>
     </div>
