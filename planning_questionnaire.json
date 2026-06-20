@@ -32,6 +32,10 @@
          {
             "type": "text",
             "question": "How important is responsive design?"
+         },
+         {
+            "type": "text",
+            "question": "What color scheme do you prefer for the game?"
          }
       ]
    }
