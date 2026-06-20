@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { CharacterCreator } from '@/components/game/character-creator';
 import { StoryInterface } from '@/components/game/story-interface';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 import { SkipLink } from '@/components/accessibility/SkipLink';
 
 const Index = () => {
@@ -33,7 +32,7 @@ const Index = () => {
             <div className="prose dark:prose-invert text-darkFantasy-secondary">
               {character?.name && <p className="text-lg mb-2">Welcome, {character.name}!</p>}
               <StoryInterface />
-            </CardContent>
+            </div>
           </CardContent>
         </Card>
       </div>
