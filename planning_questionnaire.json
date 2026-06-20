@@ -1,5 +1,5 @@
 {
-   "name": "planning_questionnaire",
+   "name": "planning_questionnaire.json",
    "parameters": {
       "questions": [
          {
@@ -28,6 +28,10 @@
                'In-game icon',
                'Auto-advance'
             ]
+         },
+         {
+            "type": "text",
+            "question": "How important is responsive design?"
          }
       ]
    }
