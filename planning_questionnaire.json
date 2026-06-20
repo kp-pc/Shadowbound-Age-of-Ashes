@@ -1,41 +1,29 @@
 {
-   "name": "planning_questionnaire.json",
+   "name": "planning_questionnaire",
    "parameters": {
       "questions": [
          {
             "type": "text",
-            "question": "What UI elements are most important for your game's interface?"
+            "question": "What is the primary interface goal of your story game?"
+         },
+         {
+            "type": "radio",
+            "question": "Which layout style do you prefer for the main menu?",
+            "options": ["vertical", "horizontal", "grid"]
          },
          {
             "type": "checkbox",
-            "question": "Do you prefer a dark or light theme?",
-            "options": ["light", "dark"]
+            "question": "Do you want audio feedback for player choices?",
+            "options": ["yes", "no"]
          },
          {
             "type": "radio",
-            "question": 'Which color palette do you like most?',
-            "options": [
-               'Tropical colors',
-               'Nature colors',
-               'Tech colors'
-            ]
-         },
-         {
-            "type": "radio",
-            "question": 'How should player interactions be designed?',
-            "options": [
-               'Pop-up dialog',
-               'In-game icon',
-               'Auto-advance'
-            ]
+            "question": "How should character visuals be rendered?",
+            "options": ["vector graphics", "high-resolution images", "minimalist icons"]
          },
          {
             "type": "text",
-            "question": "How important is responsive design?"
-         },
-         {
-            "type": "text",
-            "question": "What color scheme do you prefer for the game?"
+            "question": "What accessibility features are essential for your audience?"
          }
       ]
    }
