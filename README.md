@@ -1,1 +1,88 @@
-# Dark Fantasy Interactive Story & Mini‑Games A **React + TypeScript** web app built with Vite, Tailwind CSS, and the **shadcn/ui** component library. It lets players: - ✨ Create a custom dark‑fantasy character - 📖 Explore a branching story with rich text and choices - 🎮 Play mini‑games (Trivia, Memory Match) that track scores - 📊 View a dashboard with time‑spent and recent activity stats ## Live Demo [https://your‑username.github.io/dark-fantasy-app](#) *(replace with your GitHub Pages URL)* ## Features - **Responsive design** – mobile‑first layout, works on all screen sizes. - **Custom dark‑fantasy theme** – Tailwind colors, gothic fonts, and animated UI. - **Accessibility** – Skip link, ARIA live region for spell casting, proper contrast. - **State persistence** – Scores and time spent are saved in `localStorage`. - **Reusable components** – Character creator, story interface, magic system, inventory, etc. ## Tech Stack - React 19 + TypeScript - Vite (fast dev server & build) - Tailwind CSS + shadcn/ui components - React Router v6 for navigation - Lucide‑react icons - React‑Query, Zod, and other utilities for future extensions ## Getting Started ```bash # Clone the repo git clone https://github.com/your-username/dark-fantasy-app.git cd dark-fantasy-app # Install dependencies npm install # Run locally npm run dev ``` The app will be available at `http://localhost:8080`. ## Building for Production ```bash npm run build # Preview the build npm run preview ``` ## Deploy to GitHub Pages 1. Build the app: ```bash npm run build ``` 2. Push the `dist` folder to the `gh-pages` branch: ```bash git checkout --orphan gh-pages git --work-tree dist add --all git --work-tree dist commit -m "Deploy" git push origin gh-pages --force ``` 3. In the repository settings enable **GitHub Pages** from the `gh-pages` branch. ## Project Structure ``` src/ ├─ components/ # UI components (game, layout, accessibility) ├─ pages/ # Route pages (Index, Games, Settings, Dashboard, etc.) ├─ hooks/ # Custom React hooks ├─ lib/ # Utility functions (cn, typography) ├─ types.ts # TypeScript interfaces for story nodes └─ App.tsx # Router configuration ``` ## Contributing Feel free to open issues or submit pull requests. Guidelines: - Keep components small and focused. - Follow the existing Tailwind and shadcn/ui styling conventions. - Ensure new UI respects the dark‑fantasy color palette and contrast rules. ## License MIT © 2024 Your Name --- *Made with ❤️*
+# 🌑 Rise of the Shadowbound
+
+**A Dark Fantasy Interactive Experience**
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com)
+[![shadcn/ui](https://img.shields.io/badge/UI-shadcn-000000?logo=radix-ui)](https://ui.shadcn.com)
+
+Rise of the Shadowbound is an immersive web application that blends interactive storytelling with RPG elements and mini-games. Set in a world of oppressive shadows and forbidden magic, players forge their own dark destiny through a series of critical choices and trials.
+
+## ✨ Key Features
+
+### 🎭 Character Forging
+Create a unique dark hero by selecting from specialized classes like the **Shadowblade** or **Arcanist**. Customize core attributes (Strength, Intelligence, Agility, Charisma) and embrace forbidden traits to shape how you interact with the world.
+
+### 📖 Branching Narrative
+Experience a rich, choice-driven story. Every decision leads to different paths, uncovering hidden secrets or awakening ancient horrors. The narrative engine supports complex branching and multiple distinct endings.
+
+### 🎮 Arcane Mini-Games
+Test your wit and memory with themed challenges:
+- **Trivia Night**: Prove your knowledge of the arcane.
+- **Memory Match**: Sharpen your mind to survive the void.
+- *Integrated scoring system that persists across sessions.*
+
+### 📊 Soul Dashboard
+Track your journey through the shadows. The dashboard monitors your time spent in the realm and archives your highest scores from the various trials.
+
+## 🛠️ Technical Architecture
+
+### The Stack
+- **Frontend**: React 19 with TypeScript for type-safe, scalable development.
+- **Styling**: Tailwind CSS utilizing a custom `darkFantasy` color palette for a cohesive, atmospheric aesthetic.
+- **UI Components**: Built upon **shadcn/ui** and **Radix UI** for high accessibility and polished interactions.
+- **Routing**: React Router v6 for seamless navigation between the story, games, and dashboard.
+- **Persistence**: LocalStorage API for saving character progress and game statistics.
+
+### Design Philosophy
+- **Atmospheric UI**: Custom gothic typography and a deep purple/obsidian color scheme.
+- **Accessibility First**: Implementation of skip links, ARIA live regions for dynamic events, and high-contrast ratios.
+- **Mobile-First**: Fully responsive layout ensuring the darkness is accessible on any device.
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm or yarn
+
+### Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/dark-fantasy-app.git
+   cd dark-fantasy-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Launch the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   Navigate to `http://localhost:8080`
+
+## 📁 Project Structure
+
+```text
+src/
+├── components/       # Atomic UI components
+│   ├── game/         # Story, Character Creator, Magic System
+│   ├── ui/           # shadcn/ui base components
+│   └── accessibility/# A11y helpers (SkipLinks, etc.)
+├── pages/            # Route-level views (Dashboard, Games, Index)
+├── hooks/            # Custom React hooks for game logic
+├── lib/              # Utility functions and Tailwind merges
+├── types.ts          # Global TypeScript interfaces
+└── App.tsx           # Main routing configuration
+```
+
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+*Forged in the depths of the void. May the shadows guide you.*
