@@ -1,0 +1,28 @@
+{
+   "name": "planning_questionnaire",
+   "parameters": {
+      "questions": [
+         {
+            "type": "text",
+            "question": "How should the story narrative be presented (e.g., through a narrative text area, interactive prompts, etc.)?"
+         },
+         {
+            "type": "radio",
+            "question": 'Which interaction style for choices do you prefer?',
+            "options": [
+               'Pop-up dialog',
+               'In-game icon',
+               'Auto-advance'
+            ]
+         },
+         {
+            "type": "checkbox",
+            "question": 'Do you have a preferred button style?)',
+            "options": [
+               'Rounded buttons',
+               'Solid colored buttons'
+            ]
+         }
+      ]
+   }
+}
