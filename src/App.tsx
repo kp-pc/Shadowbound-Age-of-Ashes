@@ -5,17 +5,21 @@ import Games from './pages/Games';
 import Settings from './pages/Settings';
 import GameTrivia from './pages/GameTrivia';
 import GameMemory from './pages/GameMemory';
+import Index from './pages/Index';
+import Layout from './components/Layout';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/games" element={<Games />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/games/trivia" element={<GameTrivia />} />
-        <Route path="/games/memory" element={<GameMemory />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/games" element={<Games />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/games/trivia" element={<GameTrivia />} />
+          <Route path="/games/memory" element={<GameMemory />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
