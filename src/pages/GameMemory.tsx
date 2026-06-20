@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button } from 'shadcn/ui';
+import { Card, Button } from '@/components/ui';
 import { saveScore } from '../utils/storage';
 
 function shuffle(array: any[]) {
@@ -11,8 +11,8 @@ function shuffle(array: any[]) {
 }
 
 function GameMemory() {
-  const [cards, setCards] = useState([]);
-  const [flipped, setFlipped] = useState({});
+  const [cards, setCards] = useState<string[]>([]);
+  const [flipped, setFlipped] = useState<Record<string, boolean>>({});
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
@@ -72,10 +72,10 @@ function GameMemory() {
                 <p className="text-sm text-gray-500">Card {index + 1}</p>
               </Card.Body>
             </Card>
-          )}
+          ))}
         </div>
-        <p className="text-gray-600">Score: {score}</p>
       )}
+      <p className="text-gray-600">Score: {score}</p>
     </div>
   );
 }

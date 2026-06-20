@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { CharacterCreator } from '@/components/game/character-creator';
 import { StoryInterface } from '@/components/game/story-interface';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'shadcn/ui';
+import { Card, Button } from '@/components/ui';
 
 function Settings() {
   return (

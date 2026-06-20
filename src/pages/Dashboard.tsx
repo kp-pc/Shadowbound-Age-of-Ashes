@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Button } from 'shadcn/ui';
+import { Card, Button } from '@/components/ui';
 import { loadStats } from '../utils/storage';
 
 function Dashboard() {
-  const [stats, setStats] = useState({ timeSpent: 0, totalScore: 0, recentActivity: [] });
+  const [stats, setStats] = useState<{ 
+    timeSpent: number; 
+    totalScore: number; 
+    recentActivity: Array<{ game: string; score: number }> 
+  }>({ timeSpent: 0, totalScore: 0, recentActivity: [] });
 
   useEffect(() => {
     const data = loadStats();
@@ -39,7 +43,7 @@ function Dashboard() {
         <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
         {stats.recentActivity.length > 0 ? (
           <ul className="space-y-2">
-            {stats.recentActivity.map((item: any, idx: number) => (
+            {stats.recentActivity.map((item, idx: number) => (
               <li key={idx} className="flex justify-between">
                 <span>{item.game}</span>
                 <span className="font-medium">{item.score} points</span>

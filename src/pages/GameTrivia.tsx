@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button } from 'shadcn/ui';
+import { Button } from '@/components/ui/button';
 import { saveScore } from '../utils/storage';
 
-const triviaQuestions = [
+const triviaQuestions: { question: string; options: string[]; answer: string }[] = [
   {
     question: 'What is the capital of France?',
     options: ['Paris', 'London', 'Berlin', 'Madrid'],
