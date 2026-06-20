@@ -19,6 +19,15 @@
                'Nature colors',
                'Tech colors'
             ]
+         },
+         {
+            "type": "radio",
+            "question": 'How should player interactions be designed?',
+            "options": [
+               'Pop-up dialog',
+               'In-game icon',
+               'Auto-advance'
+            ]
          }
       ]
    }
