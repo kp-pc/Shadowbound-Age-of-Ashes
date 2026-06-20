@@ -1,0 +1,18 @@
+{
+  "git": {
+    "changelog": "git log --pretty=format:\"* %s (%h)\" --since=HEAD~1",
+    "commit": true,
+    "tag": true,
+    "push": true
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "releaseNotes": "git log --pretty=format:\"* %s (%h)\" --since=HEAD~1"
+  },
+  "hooks": {
+    "beforeRelease": ["npm run build"]
+  }
+}
