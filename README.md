@@ -14,14 +14,16 @@ Rise of the Shadowbound is an immersive web application that blends interactive 
 ### 🎭 Character Forging
 Create a unique dark hero by selecting from specialized classes like the **Shadowblade** or **Arcanist**. Customize core attributes (Strength, Intelligence, Agility, Charisma) and embrace forbidden traits to shape how you interact with the world.
 
-### 📖 Branching Narrative
-Experience a rich, choice-driven story. Every decision leads to different paths, uncovering hidden secrets or awakening ancient horrors. The narrative engine supports complex branching and multiple distinct endings.
+### 📖 Branching Narrative & Master RPG Interface
+Experience a rich, choice-driven story. The **Story Page** features a master split-screen RPG dashboard:
+- **Left Column**: The branching narrative engine where every decision leads to different paths.
+- **Right Column (Hero's Sanctum)**: A tabbed companion panel displaying your character profile, active inventory, and spellbook in real-time.
 
 ### 🎮 Arcane Mini-Games
 Test your wit and memory with themed challenges:
 - **Trivia Night**: Prove your knowledge of the arcane.
-- **Memory Match**: Sharpen your mind to survive the void.
-- *Integrated scoring system that persists across sessions.*
+- **Memory Match**: Sharpen your mind to survive the void by matching ancient runes.
+- *Integrated scoring system that persists across sessions and is tied to your active character.*
 
 ### 📊 Soul Dashboard
 Track your journey through the shadows. The dashboard monitors your time spent in the realm and archives your highest scores from the various trials.
@@ -71,7 +73,7 @@ Track your journey through the shadows. The dashboard monitors your time spent i
 ```text
 src/
 ├── components/       # Atomic UI components
-│   ├── game/         # Story, Character Creator, Magic System
+│   ├── game/         # Story, Character Creator, Magic System, Inventory
 │   ├── ui/           # shadcn/ui base components
 │   └── accessibility/# A11y helpers (SkipLinks, etc.)
 ├── pages/            # Route-level views (Dashboard, Games, Index)
