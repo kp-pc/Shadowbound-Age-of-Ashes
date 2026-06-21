@@ -10,6 +10,7 @@ import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { Link } from "react-router-dom";
 import { Sword, Flame, Shield, Heart, Zap, Sparkles, Scroll, Trophy, UserPlus } from "lucide-react";
 import { toast } from "sonner";
+import { QuestLog } from "@/components/game/QuestLog"; // New import
 
 interface Enemy {
   name: string;
@@ -146,6 +147,7 @@ export const CombatArena: React.FC = () => {
       // Save Score to stats
       const key = character ? `${character.name}:combat` : "combat";
       saveScore(key, enemy.soulReward);
+      setIsPlayerTurn(false);
     } else {
       enemyTurn(shieldActive, playerHp);
     }
@@ -182,6 +184,7 @@ export const CombatArena: React.FC = () => {
         toast.success(`Victory! You harvested ${enemy.soulReward} Soul Shards.`);
         const key = character ? `${character.name}:combat` : "combat";
         saveScore(key, enemy.soulReward);
+        setIsPlayerTurn(false);
         return;
       }
     } else {
@@ -189,7 +192,12 @@ export const CombatArena: React.FC = () => {
     }
 
     setIsPlayerTurn(false);
-    enemyTurn(spell.id === "void-shield" ? shieldActive + (15 + Math.floor(intelligenceMultiplier / 2)) : shieldActive, playerHp);
+    enemyTurn(
+      spell.id === "void-shield"
+        ? shieldActive + (15 + Math.floor(intelligenceMultiplier / 2))
+        : shieldActive,
+      playerHp,
+    );
   }, [enemy, isPlayerTurn, isCombatOver, character, shieldActive, playerHp, enemyTurn, addLog]);
 
   const handleDefend = useCallback(() => {
@@ -394,7 +402,7 @@ export const CombatArena: React.FC = () => {
             </Card>
           </div>
 
-          {/* Combat Log and Companion Deck (Right 5 Columns) */}
+          {/* Combat Log, Companion Deck & Quest Log (Right 5 Columns) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Scroll of Battle Logs */}
             <Card className="bg-darkFantasy-primary border-darkFantasy-border">
@@ -441,6 +449,18 @@ export const CombatArena: React.FC = () => {
                   <span className="text-darkFantasy-accent">Evasive Agility:</span>
                   <span className="font-bold text-white">{character.traits.agility}</span>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Quest Log */}
+            <Card className="bg-darkFantasy-primary border-darkFantasy-border">
+              <CardHeader className="border-b border-darkFantasy-border/50 bg-darkFantasy-secondary/10 py-3">
+                <CardTitle className="text-sm font-gothic text-darkFantasy-highlight flex items-center gap-2">
+                  <Trophy className="w-4 h-4" /> Quest Log
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-4 max-h-64 overflow-y-auto">
+                <QuestLog />
               </CardContent>
             </Card>
           </div>
