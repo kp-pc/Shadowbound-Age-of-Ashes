@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { loadStats } from '../utils/storage';
+import React, { useEffect, useState, useMemo } from "react";
+import { Card } from "@/components/ui/card";
+import { loadStats } from "../utils/storage";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 
 interface RecentActivity {
   game: string;
@@ -9,6 +9,7 @@ interface RecentActivity {
 }
 
 function Dashboard() {
+  const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<{
     timeSpent: number;
     totalScore: number;
@@ -16,21 +17,42 @@ function Dashboard() {
   }>({ timeSpent: 0, totalScore: 0, recentActivity: [] });
 
   useEffect(() => {
-    const data = loadStats();
-    const today = new Date().toISOString().split('T')[0];
-    const timeSpent = data[today] || 0;
-    const scores: Record<string, number> = data.scores || {};
-    const totalScore = Object.values(scores).reduce((sum, val) => sum + val, 0);
-
-    setStats({
-      timeSpent,
-      totalScore,
-      recentActivity: Object.entries(scores).map(([game, score]) => ({
-        game,
-        score,
-      })),
-    });
+    const fetch = async () => {
+      try {
+        const data = loadStats();
+        const today = new Date().toISOString().split("T")[0];
+        const timeSpent = data[today] || 0;
+        const scores: Record<string, number> = data.scores || {};
+        const totalScore = Object.values(scores).reduce((sum, val) => sum + val, 0);
+        setStats({
+          timeSpent,
+          totalScore,
+          recentActivity: Object.entries(scores).map(([game, score]) => ({
+            game,
+            score,
+          })),
+        });
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetch();
   }, []);
+
+  const activityList = useMemo(
+    () =>
+      stats.recentActivity.map((item, idx) => (
+        <li key={idx} className="flex justify-between">
+          <span>{item.game}</span>
+          <span className="font-medium">{item.score} points</span>
+        </li>
+      )),
+    [stats.recentActivity],
+  );
+
+  if (loading) return <LoadingSpinner size="lg" />;
 
   return (
     <div className="space-y-6">
@@ -51,14 +73,7 @@ function Dashboard() {
       <Card className="p-4 rounded-lg shadow-md">
         <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
         {stats.recentActivity.length > 0 ? (
-          <ul className="space-y-2">
-            {stats.recentActivity.map((item, idx) => (
-              <li key={idx} className="flex justify-between">
-                <span>{item.game}</span>
-                <span className="font-medium">{item.score} points</span>
-              </li>
-            ))}
-          </ul>
+          <ul className="space-y-2">{activityList}</ul>
         ) : (
           <p className="text-gray-500">No recent activity yet. Play a game!</p>
         )}
