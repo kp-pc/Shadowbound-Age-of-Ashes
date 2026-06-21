@@ -10,6 +10,7 @@
 - [x] **Interactive Inventory & Spellbook**: Allowed players to find items and learn spells during the story, which then appear in their companion panel in real-time.
 - [x] **Turn-Based Combat Arena**: Added a reactive turn-based combat battlefield where players fight randomized shadow beasts using physical strikes, defensive maneuvers, and their collected spellbook, awarding Soul Shards that feed directly back into the Dashboard score tracking.
 - [x] **The Soul Forge**: Created an interactive warlock merchant system where players sacrifice gathered Soul Shards to acquire permanent stat attribute buffs, epic equipment, and high-tier spell scrolls.
+- [x] **In-Game Quest Log System**: Built a dynamic quest tracker calculating progression targets (time spent, high scores, combat accomplishments, character creation status) with tabs for active and completed categories. Accessible from the navigation bar as well as directly inside the Story Companion's right panel tabbed deck.
 
 ## Future Ideas
 - [ ] **Sound Effects & Ambient Music**: Atmospheric background tracks and audio feedback for choices and spell casting.

@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { StoryInterface } from '@/components/game/story-interface';
 import { Inventory } from '@/components/game/inventory';
 import { MagicSystem } from '@/components/game/magic-system';
+import { QuestLog } from '@/components/game/QuestLog';
 import { loadCharacter } from '@/utils/characterStorage';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Backpack, Sparkles, User } from 'lucide-react';
+import { Shield, Backpack, Sparkles, User, ScrollText } from 'lucide-react';
 
 const StoryPage: React.FC = () => {
   const navigate = useNavigate();
@@ -39,27 +40,34 @@ const StoryPage: React.FC = () => {
           </CardHeader>
           <CardContent className="p-4">
             <Tabs defaultValue="profile" className="w-full">
-              <TabsList className="grid grid-cols-3 bg-darkFantasy-shadow border border-darkFantasy-border p-1 rounded-lg">
+              <TabsList className="grid grid-cols-4 bg-darkFantasy-shadow border border-darkFantasy-border p-1 rounded-lg">
                 <TabsTrigger 
                   value="profile" 
-                  className="data-[state=active]:bg-darkFantasy-accent data-[state=active]:text-white text-darkFantasy-highlight font-gothic text-xs py-2"
+                  className="data-[state=active]:bg-darkFantasy-accent data-[state=active]:text-white text-darkFantasy-highlight font-gothic text-[10px] py-2"
                 >
-                  <User className="w-3.5 h-3.5 mr-1.5" />
+                  <User className="w-3 h-3 mr-1" />
                   Profile
                 </TabsTrigger>
                 <TabsTrigger 
                   value="inventory" 
-                  className="data-[state=active]:bg-darkFantasy-accent data-[state=active]:text-white text-darkFantasy-highlight font-gothic text-xs py-2"
+                  className="data-[state=active]:bg-darkFantasy-accent data-[state=active]:text-white text-darkFantasy-highlight font-gothic text-[10px] py-2"
                 >
-                  <Backpack className="w-3.5 h-3.5 mr-1.5" />
-                  Inventory
+                  <Backpack className="w-3 h-3 mr-1" />
+                  Bag
                 </TabsTrigger>
                 <TabsTrigger 
                   value="spells" 
-                  className="data-[state=active]:bg-darkFantasy-accent data-[state=active]:text-white text-darkFantasy-highlight font-gothic text-xs py-2"
+                  className="data-[state=active]:bg-darkFantasy-accent data-[state=active]:text-white text-darkFantasy-highlight font-gothic text-[10px] py-2"
                 >
-                  <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-                  Spellbook
+                  <Sparkles className="w-3 h-3 mr-1" />
+                  Spells
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="quests" 
+                  className="data-[state=active]:bg-darkFantasy-accent data-[state=active]:text-white text-darkFantasy-highlight font-gothic text-[10px] py-2"
+                >
+                  <ScrollText className="w-3 h-3 mr-1" />
+                  Quests
                 </TabsTrigger>
               </TabsList>
 
@@ -125,6 +133,11 @@ const StoryPage: React.FC = () => {
                 <div className="max-h-[400px] overflow-y-auto pr-1">
                   <MagicSystem />
                 </div>
+              </TabsContent>
+
+              {/* Quests Tab */}
+              <TabsContent value="quests" className="mt-4 animate-fade-in-up">
+                <QuestLog />
               </TabsContent>
             </Tabs>
           </CardContent>

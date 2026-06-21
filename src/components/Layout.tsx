@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SkipLink } from '@/components/accessibility/SkipLink';
-import { LayoutDashboard, Trophy, Settings as SettingsIcon, User, Sparkles, Sword, Flame } from 'lucide-react';
+import { LayoutDashboard, Trophy, Settings as SettingsIcon, User, Sparkles, Sword, Flame, ScrollText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface LayoutProps {
@@ -21,6 +21,7 @@ function Layout({ children }: LayoutProps) {
     { path: '/story', label: 'Story', icon: <Sparkles className="w-4 h-4" /> },
     { path: '/combat', label: 'Arena', icon: <Sword className="w-4 h-4" /> },
     { path: '/forge', label: 'Forge', icon: <Flame className="w-4 h-4" /> },
+    { path: '/quests', label: 'Quests', icon: <ScrollText className="w-4 h-4" /> },
     { path: '/games', label: 'Trials', icon: <Trophy className="w-4 h-4" /> },
     { path: '/settings', label: 'Settings', icon: <SettingsIcon className="w-4 h-4" /> },
   ];

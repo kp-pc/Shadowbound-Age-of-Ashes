@@ -13,6 +13,7 @@ import CharacterCreatorPage from "./pages/CharacterCreatorPage";
 import StoryPage from "./pages/StoryPage";
 import CombatArena from "./pages/CombatArena";
 import SoulForge from "./pages/SoulForge";
+import QuestLogPage from "./pages/QuestLogPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="/story" element={<StoryPage />} />
               <Route path="/combat" element={<CombatArena />} />
               <Route path="/forge" element={<SoulForge />} />
+              <Route path="/quests" element={<QuestLogPage />} />
             </Routes>
           </Suspense>
         </Layout>
