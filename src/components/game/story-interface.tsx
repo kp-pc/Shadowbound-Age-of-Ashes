@@ -5,8 +5,44 @@ import { cn } from "@/lib/utils";
 import { StoryNode, StoryChoice } from "@/types";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 
+/* Minimal story data – can be expanded later */
 const storyNodes: StoryNode[] = [
-  // (same story nodes as before – omitted for brevity)
+  {
+    id: "start",
+    text: "You awaken in a dimly lit crypt, the air thick with ancient whispers. Two passages lie before you.",
+    choices: [
+      { id: "c1", text: "Take the left corridor", nextNodeId: "left", consequences: "The walls seem to close in." },
+      { id: "c2", text: "Take the right corridor", nextNodeId: "right", consequences: "A faint glow beckons." },
+    ],
+  },
+  {
+    id: "left",
+    text: "Shadows coil around you, and a spectral blade hovers in the darkness.",
+    choices: [
+      { id: "c3", text: "Grab the blade", nextNodeId: "blade", consequences: "Cold runs through your veins." },
+      { id: "c4", text: "Retreat", nextNodeId: "start", consequences: "You return to the entrance." },
+    ],
+  },
+  {
+    id: "right",
+    text: "A warm ember fires a torch, revealing an ancient tome.",
+    choices: [
+      { id: "c5", text: "Read the tome", nextNodeId: "tome", consequences: "Knowledge floods your mind." },
+      { id: "c6", text: "Ignore it", nextNodeId: "start", consequences: "You step back into darkness." },
+    ],
+  },
+  {
+    id: "blade",
+    text: "The blade fuses with your hand, granting you shadowy power.",
+    choices: [],
+    isEnding: true,
+  },
+  {
+    id: "tome",
+    text: "The tome grants you insight, revealing a hidden exit.",
+    choices: [],
+    isEnding: true,
+  },
 ];
 
 export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComplete }) => {
@@ -23,13 +59,13 @@ export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComple
         setTimeout(() => {
           setCurrentNodeId(choice.nextNodeId);
           setLoading(false);
-        }, 300); // small transition delay
+        }, 300);
       }
     },
     [currentNode],
   );
 
-  if (!currentNode) return <div>Error: Node not found</div>;
+  if (!currentNode) return <div className="p-4">Error: story node not found.</div>;
 
   if (currentNode.isEnding) {
     return (
@@ -37,14 +73,17 @@ export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComple
         <Card className="w-full max-w-2xl bg-darkFantasy-primary border-darkFantasy-border">
           <CardHeader>
             <CardTitle className="text-3xl font-gothic text-darkFantasy-highlight">
-              Your Destiny is Fulfilled
+              The Tale Concludes
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="prose dark:prose-invert text-darkFantasy-secondary break-words">{currentNode.text}</div>
+            <div className="prose dark:prose-invert text-darkFantasy-secondary">{currentNode.text}</div>
             {onComplete && (
-              <Button onClick={onComplete} className="w-full bg-darkFantasy-accent hover:bg-darkFantasy-highlight text-white font-gothic py-3">
-                Return to Adventure
+              <Button
+                onClick={onComplete}
+                className="w-full bg-darkFantasy-accent hover:bg-darkFantasy-highlight text-white font-gothic py-3"
+              >
+                Return to Dashboard
               </Button>
             )}
           </CardContent>
@@ -63,7 +102,7 @@ export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComple
           className="w-full text-left bg-darkFantasy-secondary/50 hover:bg-darkFantasy-secondary border-darkFantasy-border text-darkFantasy-highlight font-gothic py-3 h-auto whitespace-normal"
         >
           <div className="flex flex-col">
-            <span className="block">{choice.text}</span>
+            <span>{choice.text}</span>
             {choice.consequences && (
               <span className="text-sm text-darkFantasy-accent italic mt-1">{choice.consequences}</span>
             )}
@@ -78,11 +117,11 @@ export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComple
       {loading && <LoadingSpinner size="lg" />}
       <Card className="w-full max-w-2xl bg-darkFantasy-primary border-darkFantasy-border">
         <CardHeader>
-          <CardTitle className="text-2xl font-gothic text-darkFantasy-highlight">Tale of the Shadow Realm</CardTitle>
+          <CardTitle className="text-2xl font-gothic text-darkFantasy-highlight">Shadowbound Tale</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="prose dark:prose-invert text-darkFantasy-secondary break-words">{currentNode.text}</div>
-          {currentNode.choices?.length > 0 && <div className="space-y-3">{choiceButtons}</div>}
+          <div className="prose dark:prose-invert text-darkFantasy-secondary">{currentNode.text}</div>
+          <div className="space-y-3">{choiceButtons}</div>
         </CardContent>
       </Card>
     </div>
