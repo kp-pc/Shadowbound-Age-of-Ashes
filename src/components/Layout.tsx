@@ -16,6 +16,7 @@ function Layout({ children }: LayoutProps) {
 
   const navItems = [
     { path: '/', label: 'Home', icon: <Sparkles className="w-4 h-4" /> },
+    { path: '/dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-4 h-4" /> },
     { path: '/character', label: 'Create Hero', icon: <User className="w-4 h-4" /> },
     { path: '/story', label: 'Story', icon: <Sparkles className="w-4 h-4" /> },
     { path: '/games', label: 'Trials', icon: <Trophy className="w-4 h-4" /> },

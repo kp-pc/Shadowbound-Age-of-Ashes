@@ -20,6 +20,7 @@ function App() {
           <Suspense fallback={<LoadingSpinner size="lg" />}>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/games" element={<Games />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/games/trivia" element={<GameTrivia />} />
