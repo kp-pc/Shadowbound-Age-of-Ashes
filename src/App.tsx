@@ -11,6 +11,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 import CharacterCreatorPage from "./pages/CharacterCreatorPage";
 import StoryPage from "./pages/StoryPage";
+import CombatArena from "./pages/CombatArena";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/games/memory" element={<GameMemory />} />
               <Route path="/character" element={<CharacterCreatorPage />} />
               <Route path="/story" element={<StoryPage />} />
+              <Route path="/combat" element={<CombatArena />} />
             </Routes>
           </Suspense>
         </Layout>

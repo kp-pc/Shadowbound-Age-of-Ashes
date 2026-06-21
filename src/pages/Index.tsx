@@ -23,14 +23,14 @@ const Index = () => {
           </div>
           
           <div className="flex flex-col md:flex-row gap-6 justify-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <Link to="/games">
+            <Link to="/combat">
               <Button size="lg" className="bg-darkFantasy-accent hover:bg-darkFantasy-highlight text-white font-gothic text-lg px-8 py-4 transform transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-darkFantasy-accent/50">
-                <Trophy className="mr-2 animate-bounce" /> Play Games
+                <Sword className="mr-2 animate-bounce" /> Enter Arena
               </Button>
             </Link>
-            <Link to="/settings">
+            <Link to="/games">
               <Button size="lg" variant="outline" className="border-darkFantasy-highlight text-darkFantasy-highlight hover:bg-darkFantasy-highlight hover:text-white font-gothic text-lg px-8 py-4 transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
-                <Shield className="mr-2 animate-pulse" /> Configure
+                <Trophy className="mr-2 animate-pulse" /> Play Games
               </Button>
             </Link>
           </div>
@@ -51,11 +51,11 @@ const Index = () => {
                 <div className="w-16 h-16 bg-darkFantasy-accent rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 group-hover:rotate-180 group-hover:scale-110">
                   <Sword className="w-8 h-8 text-white group-hover:animate-spin" />
                 </div>
-                <CardTitle className="text-darkFantasy-highlight font-gothic group-hover:text-darkFantasy-highlight/80">Character Forging</CardTitle>
+                <CardTitle className="text-darkFantasy-highlight font-gothic group-hover:text-darkFantasy-highlight/80">Combat Arena</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-darkFantasy-secondary text-center group-hover:text-darkFantasy-secondary/80">
-                  Create unique dark heroes with specialized classes like Shadowblade, Arcanist, and Bloodknight
+                  Duel void-born anomalies in reactive, turn-based combat using your crafted items and learned spellbook
                 </p>
               </CardContent>
             </Card>
@@ -120,9 +120,9 @@ const Index = () => {
               Begin your journey into the shadow realm. Choose your path and forge your legend.
             </p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
-              <Link to="/games">
+              <Link to="/combat">
                 <Button size="lg" className="bg-darkFantasy-accent hover:bg-darkFantasy-highlight text-white font-gothic text-lg px-10 py-4 transform transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-darkFantasy-accent/50 animate-bounce">
-                  Start Playing Now
+                  Enter Combat Arena
                 </Button>
               </Link>
               <Link to="/settings">

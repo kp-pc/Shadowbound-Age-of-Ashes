@@ -8,7 +8,7 @@
 - [x] **Soul Dashboard**: Real-time tracking of time spent in the realm and high scores from the trials.
 - [x] **Dynamic Story Consequences**: Connected choices in the story to character attributes (e.g., requiring high Strength to break a door, or high Intelligence to read the tome).
 - [x] **Interactive Inventory & Spellbook**: Allowed players to find items and learn spells during the story, which then appear in their companion panel in real-time.
+- [x] **Turn-Based Combat Arena**: Added a reactive turn-based combat battlefield where players fight randomized shadow beasts using physical strikes, defensive maneuvers, and their collected spellbook, awarding Soul Shards that feed directly back into the Dashboard score tracking.
 
 ## Future Ideas
-- [ ] **Combat System**: A simple turn-based combat encounter with shadow beasts using the spellbook and weapons.
 - [ ] **Sound Effects & Ambient Music**: Atmospheric background tracks and audio feedback for choices and spell casting.
