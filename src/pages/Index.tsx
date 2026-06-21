@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Sword, BookOpen, Trophy, Sparkles, Shield, Crown } from 'lucide-react';
+import { Sword, BookOpen, Trophy, Sparkles, Shield, Crown, Flame } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -26,6 +26,11 @@ const Index = () => {
             <Link to="/combat">
               <Button size="lg" className="bg-darkFantasy-accent hover:bg-darkFantasy-highlight text-white font-gothic text-lg px-8 py-4 transform transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-darkFantasy-accent/50">
                 <Sword className="mr-2 animate-bounce" /> Enter Arena
+              </Button>
+            </Link>
+            <Link to="/forge">
+              <Button size="lg" className="bg-darkFantasy-secondary hover:bg-darkFantasy-primary border border-darkFantasy-border text-darkFantasy-highlight hover:border-darkFantasy-accent font-gothic text-lg px-8 py-4 transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                <Flame className="mr-2 animate-pulse text-darkFantasy-highlight" /> Soul Forge
               </Button>
             </Link>
             <Link to="/games">
@@ -64,13 +69,13 @@ const Index = () => {
             <Card className="bg-darkFantasy-primary border-darkFantasy-border hover:border-darkFantasy-accent transition-all duration-500 hover:scale-110 hover:-rotate-2 hover:shadow-2xl hover:shadow-darkFantasy-accent/30 group">
               <CardHeader className="text-center">
                 <div className="w-16 h-16 bg-darkFantasy-accent rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 group-hover:rotate-180 group-hover:scale-110">
-                  <BookOpen className="w-8 h-8 text-white group-hover:animate-bounce" />
+                  <Flame className="w-8 h-8 text-white group-hover:animate-bounce" />
                 </div>
-                <CardTitle className="text-darkFantasy-highlight font-gothic group-hover:text-darkFantasy-highlight/80">Branching Narrative</CardTitle>
+                <CardTitle className="text-darkFantasy-highlight font-gothic group-hover:text-darkFantasy-highlight/80">The Soul Forge</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-darkFantasy-secondary text-center group-hover:text-darkFantasy-secondary/80">
-                  Experience choice-driven storytelling where every decision leads to different paths and endings
+                  Spend your earned shards to buy legendary attribute potions, gear relics, and warlock spell scrolls
                 </p>
               </CardContent>
             </Card>

@@ -12,6 +12,7 @@ import { LoadingSpinner } from "./components/LoadingSpinner";
 import CharacterCreatorPage from "./pages/CharacterCreatorPage";
 import StoryPage from "./pages/StoryPage";
 import CombatArena from "./pages/CombatArena";
+import SoulForge from "./pages/SoulForge";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path="/character" element={<CharacterCreatorPage />} />
               <Route path="/story" element={<StoryPage />} />
               <Route path="/combat" element={<CombatArena />} />
+              <Route path="/forge" element={<SoulForge />} />
             </Routes>
           </Suspense>
         </Layout>

@@ -9,6 +9,7 @@
 - [x] **Dynamic Story Consequences**: Connected choices in the story to character attributes (e.g., requiring high Strength to break a door, or high Intelligence to read the tome).
 - [x] **Interactive Inventory & Spellbook**: Allowed players to find items and learn spells during the story, which then appear in their companion panel in real-time.
 - [x] **Turn-Based Combat Arena**: Added a reactive turn-based combat battlefield where players fight randomized shadow beasts using physical strikes, defensive maneuvers, and their collected spellbook, awarding Soul Shards that feed directly back into the Dashboard score tracking.
+- [x] **The Soul Forge**: Created an interactive warlock merchant system where players sacrifice gathered Soul Shards to acquire permanent stat attribute buffs, epic equipment, and high-tier spell scrolls.
 
 ## Future Ideas
 - [ ] **Sound Effects & Ambient Music**: Atmospheric background tracks and audio feedback for choices and spell casting.
