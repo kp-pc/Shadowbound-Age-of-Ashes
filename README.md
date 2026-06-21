@@ -19,6 +19,12 @@ Experience a rich, choice-driven story. The **Story Page** features a master spl
 - **Left Column**: The branching narrative engine where every decision leads to different paths.
 - **Right Column (Hero's Sanctum)**: A tabbed companion panel displaying your character profile, active inventory, and spellbook in real-time.
 
+### ⚡ Dynamic Story Consequences & Stat Checks
+Your character's attributes matter! Certain choices require specific stats to succeed (e.g., forcing open a heavy iron gate requires high Strength, while deciphering ancient runes requires high Intelligence).
+
+### 🎒 Interactive Inventory & Spellbook Rewards
+Discover legendary weapons, armor, and learn powerful spells directly from your choices in the story. These rewards instantly appear in your companion panel and persist across your journey.
+
 ### 🎮 Arcane Mini-Games
 Test your wit and memory with themed challenges:
 - **Trivia Night**: Prove your knowledge of the arcane.

@@ -1,56 +1,59 @@
-import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Sparkles, Flame, Wind, Zap, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-interface Spell {
+export interface Spell {
   id: string;
   name: string;
   description: string;
-  icon: React.ReactNode;
   color: string;
-  effect: string;
 }
 
-const SPELLS: Spell[] = [
+const DEFAULT_SPELLS: Spell[] = [
   {
     id: 'shadow-bolt',
     name: 'Shadow Bolt',
     description: 'Hurl a bolt of concentrated void energy.',
-    icon: <Zap className="w-5 h-5" />,
-    color: 'bg-purple-600',
-    effect: 'animate-pulse'
-  },
-  {
-    id: 'blood-flame',
-    name: 'Blood Flame',
-    description: 'Ignite the air with crimson fire.',
-    icon: <Flame className="w-5 h-5" />,
-    color: 'bg-red-600',
-    effect: 'animate-bounce'
+    color: 'bg-purple-600'
   },
   {
     id: 'void-shield',
     name: 'Void Shield',
     description: 'Create a barrier of absolute darkness.',
-    icon: <Shield className="w-5 h-5" />,
-    color: 'bg-indigo-800',
-    effect: 'animate-spin'
-  },
-  {
-    id: 'spectral-wind',
-    name: 'Spectral Wind',
-    description: 'Summon a gale of ghostly whispers.',
-    icon: <Wind className="w-5 h-5" />,
-    color: 'bg-blue-400',
-    effect: 'animate-pulse'
+    color: 'bg-indigo-800'
   }
 ];
 
+const ICON_MAP: Record<string, React.ReactNode> = {
+  'shadow-bolt': <Zap className="w-5 h-5" />,
+  'blood-flame': <Flame className="w-5 h-5" />,
+  'void-shield': <Shield className="w-5 h-5" />,
+  'spectral-wind': <Wind className="w-5 h-5" />,
+  'default': <Sparkles className="w-5 h-5" />
+};
+
 export const MagicSystem: React.FC = () => {
+  const [spells, setSpells] = useState<Spell[]>([]);
   const [activeSpell, setActiveSpell] = useState<string | null>(null);
   const [announcement, setAnnouncement] = useState('');
+
+  useEffect(() => {
+    const loadSpells = () => {
+      const stored = localStorage.getItem('shadowboundSpells');
+      if (stored) {
+        setSpells(JSON.parse(stored));
+      } else {
+        localStorage.setItem('shadowboundSpells', JSON.stringify(DEFAULT_SPELLS));
+        setSpells(DEFAULT_SPELLS);
+      }
+    };
+
+    loadSpells();
+    // Listen for custom events to update spells in real-time
+    window.addEventListener('spellsUpdated', loadSpells);
+    return () => window.removeEventListener('spellsUpdated', loadSpells);
+  }, []);
 
   const castSpell = (spellId: string) => {
     setActiveSpell(spellId);
@@ -65,30 +68,34 @@ export const MagicSystem: React.FC = () => {
         {announcement}
       </div>
       
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {SPELLS.map(spell => (
-          <Card 
-            key={spell.id} 
-            className={cn(
-              "cursor-pointer transition-all duration-300 border-darkFantasy-border bg-darkFantasy-secondary hover:scale-105",
-              activeSpell === spell.id && "ring-4 ring-darkFantasy-highlight scale-110"
-            )}
-            onClick={() => castSpell(spell.id)}
-          >
-            <CardContent className="p-4 flex flex-col items-center text-center space-y-2">
-              <div className={cn(
-                "p-3 rounded-full text-white",
-                spell.color,
-                activeSpell === spell.id && spell.effect
-              )}>
-                {spell.icon}
-              </div>
-              <div className="font-gothic text-darkFantasy-highlight">{spell.name}</div>
-              <div className="text-xs text-darkFantasy-secondary">{spell.description}</div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {spells.length === 0 ? (
+        <p className="text-sm text-darkFantasy-accent italic text-center py-4">Your spellbook is empty.</p>
+      ) : (
+        <div className="grid grid-cols-2 gap-4">
+          {spells.map(spell => (
+            <Card 
+              key={spell.id} 
+              className={cn(
+                "cursor-pointer transition-all duration-300 border-darkFantasy-border bg-darkFantasy-secondary hover:scale-105",
+                activeSpell === spell.id && "ring-4 ring-darkFantasy-highlight scale-110"
+              )}
+              onClick={() => castSpell(spell.id)}
+            >
+              <CardContent className="p-4 flex flex-col items-center text-center space-y-2">
+                <div className={cn(
+                  "p-3 rounded-full text-white",
+                  spell.color,
+                  activeSpell === spell.id && "animate-pulse"
+                )}>
+                  {ICON_MAP[spell.id] || ICON_MAP['default']}
+                </div>
+                <div className="font-gothic text-darkFantasy-highlight text-sm">{spell.name}</div>
+                <div className="text-[10px] text-darkFantasy-accent leading-tight">{spell.description}</div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
       
       {activeSpell && (
         <div className="fixed inset-0 pointer-events-none flex items-center justify-center z-50">
