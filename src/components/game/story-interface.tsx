@@ -1,9 +1,10 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { StoryNode, StoryChoice } from "@/types";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
+import { saveStoryProgress, loadStoryProgress, clearStoryProgress } from "@/utils/storyStorage";
 
 /* Minimal story data – can be expanded later */
 const storyNodes: StoryNode[] = [
@@ -48,6 +49,16 @@ const storyNodes: StoryNode[] = [
 export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComplete }) => {
   const [currentNodeId, setCurrentNodeId] = useState<string>("start");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Load saved progress on mount
+  useEffect(() => {
+    const saved = loadStoryProgress();
+    if (saved && storyNodes.some((n) => n.id === saved)) {
+      setCurrentNodeId(saved);
+    }
+  }, []);
+
   const currentNode = useMemo(() => storyNodes.find((n) => n.id === currentNodeId), [currentNodeId]);
 
   const handleChoice = useCallback(
@@ -58,6 +69,7 @@ export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComple
         setLoading(true);
         setTimeout(() => {
           setCurrentNodeId(choice.nextNodeId);
+          saveStoryProgress(choice.nextNodeId);
           setLoading(false);
         }, 300);
       }
@@ -65,7 +77,25 @@ export const StoryInterface: React.FC<{ onComplete?: () => void }> = ({ onComple
     [currentNode],
   );
 
-  if (!currentNode) return <div className="p-4">Error: story node not found.</div>;
+  // When story ends, clear saved progress
+  useEffect(() => {
+    if (currentNode?.isEnding) {
+      clearStoryProgress();
+    }
+  }, [currentNode]);
+
+  if (error) {
+    return (
+      <div className="p-4 text-red-600">
+        <h2 className="text-xl font-bold">Something went wrong</h2>
+        <p>{error}</p>
+      </div>
+    );
+  }
+
+  if (!currentNode) {
+    return <div className="p-4">Error: story node not found.</div>;
+  }
 
   if (currentNode.isEnding) {
     return (

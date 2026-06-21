@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { saveScore } from "../utils/storage";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
+import { loadCharacter } from "@/utils/characterStorage";
 
 const triviaQuestions = [
   {
@@ -21,12 +22,14 @@ function GameTrivia() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [processing, setProcessing] = useState(false);
+  const character = loadCharacter();
 
   useEffect(() => {
     if (gameOver) {
-      saveScore("trivia", score);
+      const key = character ? `${character.name}:trivia` : "trivia";
+      saveScore(key, score);
     }
-  }, [gameOver, score]);
+  }, [gameOver, score, character]);
 
   const handleAnswer = async (selectedOption: string) => {
     setProcessing(true);
@@ -39,7 +42,6 @@ function GameTrivia() {
     } else {
       setCurrentQuestion(next);
     }
-    // Simulate brief processing delay
     await new Promise((res) => setTimeout(res, 300));
     setProcessing(false);
   };

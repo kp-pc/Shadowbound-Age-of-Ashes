@@ -3,6 +3,7 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { saveScore } from "../utils/storage";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
+import { loadCharacter } from "@/utils/characterStorage";
 
 function shuffle(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -18,6 +19,7 @@ function GameMemory() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [loading, setLoading] = useState(true);
+  const character = loadCharacter();
 
   useEffect(() => {
     const init = async () => {
@@ -53,9 +55,10 @@ function GameMemory() {
 
   useEffect(() => {
     if (gameOver) {
-      saveScore("memory", score);
+      const key = character ? `${character.name}:memory` : "memory";
+      saveScore(key, score);
     }
-  }, [gameOver, score]);
+  }, [gameOver, score, character]);
 
   const renderedCards = useMemo(
     () =>
