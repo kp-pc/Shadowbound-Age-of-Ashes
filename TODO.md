@@ -14,3 +14,4 @@
 
 ## Future Ideas
 - [ ] **Sound Effects & Ambient Music**: Atmospheric background tracks and audio feedback for choices and spell casting.
+- [ ] **More Story Paths**: Deepen the branching chambers of the undercrypt with unique boss encounters.

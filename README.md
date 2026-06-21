@@ -7,32 +7,42 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com)
 [![shadcn/ui](https://img.shields.io/badge/UI-shadcn-000000?logo=radix-ui)](https://ui.shadcn.com)
 
-Rise of the Shadowbound is an immersive web application that blends interactive storytelling with RPG elements and mini-games. Set in a world of oppressive shadows and forbidden magic, players forge their own dark destiny through a series of critical choices and trials.
+Rise of the Shadowbound is an immersive web application that blends interactive storytelling with RPG elements, turn-based combat, and arcane mini-games. Set in a world of oppressive shadows and forbidden magic, players forge their own dark destiny through critical choices, dynamic combat encounters, and cosmic trials.
 
 ## ✨ Key Features
 
 ### 🎭 Character Forging
-Create a unique dark hero by selecting from specialized classes like the **Shadowblade** or **Arcanist**. Customize core attributes (Strength, Intelligence, Agility, Charisma) and embrace forbidden traits to shape how you interact with the world.
+Create a unique dark hero by selecting from specialized classes like the **Shadowblade** or **Arcanist**. Customize core attributes (Strength, Intelligence, Agility, Charisma) and embrace forbidden dark traits to shape how you interact with the world.
 
 ### 📖 Branching Narrative & Master RPG Interface
-Experience a rich, choice-driven story. The **Story Page** features a master split-screen RPG dashboard:
-- **Left Column**: The branching narrative engine where every decision leads to different paths.
-- **Right Column (Hero's Sanctum)**: A tabbed companion panel displaying your character profile, active inventory, and spellbook in real-time.
+Experience a choice-driven story. The **Story Page** features a master split-screen companion layout:
+- **Left Column**: The branching narrative engine where every decision branches into different paths.
+- **Right Column (Hero's Sanctum)**: A tabbed companion panel displaying your character profile, active inventory, spellbook, and active quests in real-time.
 
-### ⚡ Dynamic Story Consequences & Stat Checks
-Your character's attributes matter! Certain choices require specific stats to succeed (e.g., forcing open a heavy iron gate requires high Strength, while deciphering ancient runes requires high Intelligence).
+### ⚔️ Turn-Based Combat Arena (Shadow Arena)
+Test your attributes in the **Shadow Beast Arena**. Encounter randomly generated void monsters and engage in responsive turn-based combat:
+- Use physical **Strikes** scaling with your Strength.
+- Raise **Void Shields** or block with your Agility.
+- Cast **Blood Flame** and **Shadow Bolts** unlocked directly from story scrolls or the Soul Forge.
+- Harvest defeated beast souls for **Soul Shards**.
 
-### 🎒 Interactive Inventory & Spellbook Rewards
-Discover legendary weapons, armor, and learn powerful spells directly from your choices in the story. These rewards instantly appear in your companion panel and persist across your journey.
+### 🧪 The Soul Forge (Arcane Merchant)
+Sacrifice your harvested Soul Shards at **The Soul Forge** to:
+- Purchase legendary **Elixirs** to permanently buff stats (Strength, Intelligence, Agility, Charisma).
+- Unlock dangerous high-tier **Spell scrolls** like the *Scroll of Spectral Wind*.
+- Forge legendary armaments like the *Scythe of the Harvester* and *Doomlord's Signet*.
+
+### 📜 Dynamic Quest Log System
+Keep track of your fate with an integrated **Quest Journal**:
+- Auto-tracks objectives like survival time spent, high-tier combat accomplishments, character creation, and trivia scores.
+- Live-updating progress bars.
+- Filterable tabs for **Active** and **Completed** quests.
+- Accessible directly within the navigation bar, dashboard, and the story companion panel.
 
 ### 🎮 Arcane Mini-Games
 Test your wit and memory with themed challenges:
-- **Trivia Night**: Prove your knowledge of the arcane.
-- **Memory Match**: Sharpen your mind to survive the void by matching ancient runes.
-- *Integrated scoring system that persists across sessions and is tied to your active character.*
-
-### 📊 Soul Dashboard
-Track your journey through the shadows. The dashboard monitors your time spent in the realm and archives your highest scores from the various trials.
+- **Trivia Night**: Prove your knowledge of forbidden lore.
+- **Memory Match**: Sharpen your focus by matching ancient runes before they vanish.
 
 ## 🛠️ Technical Architecture
 
@@ -40,57 +50,8 @@ Track your journey through the shadows. The dashboard monitors your time spent i
 - **Frontend**: React 19 with TypeScript for type-safe, scalable development.
 - **Styling**: Tailwind CSS utilizing a custom `darkFantasy` color palette for a cohesive, atmospheric aesthetic.
 - **UI Components**: Built upon **shadcn/ui** and **Radix UI** for high accessibility and polished interactions.
-- **Routing**: React Router v6 for seamless navigation between the story, games, and dashboard.
-- **Persistence**: LocalStorage API for saving character progress and game statistics.
-
-### Design Philosophy
-- **Atmospheric UI**: Custom gothic typography and a deep purple/obsidian color scheme.
-- **Accessibility First**: Implementation of skip links, ARIA live regions for dynamic events, and high-contrast ratios.
-- **Mobile-First**: Fully responsive layout ensuring the darkness is accessible on any device.
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (Latest LTS recommended)
-- npm or yarn
-
-### Installation
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/dark-fantasy-app.git
-   cd dark-fantasy-app
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Launch the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   Navigate to `http://localhost:8080`
-
-## 📁 Project Structure
-
-```text
-src/
-├── components/       # Atomic UI components
-│   ├── game/         # Story, Character Creator, Magic System, Inventory
-│   ├── ui/           # shadcn/ui base components
-│   └── accessibility/# A11y helpers (SkipLinks, etc.)
-├── pages/            # Route-level views (Dashboard, Games, Index)
-├── hooks/            # Custom React hooks for game logic
-├── lib/              # Utility functions and Tailwind merges
-├── types.ts          # Global TypeScript interfaces
-└── App.tsx           # Main routing configuration
-```
-
-## 📜 License
-Distributed under the MIT License. See `LICENSE` for more information.
+- **Routing**: React Router v6 for seamless navigation.
+- **Persistence**: LocalStorage API for saving character progress, spells, inventory, and quest statistics.
 
 ---
 *Forged in the depths of the void. May the shadows guide you.*
